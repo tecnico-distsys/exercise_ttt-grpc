@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pt.ulisboa.tecnico.distsys.ttt;
+
+option java_multiple_files = true;
+
+message CurrentBoardRequest {
+  // No arguments for this request
+}
+
+message CurrentBoardResponse {
+  string board = 1;
+}
+
+service TTT {
+  rpc CurrentBoard(CurrentBoardRequest) returns (CurrentBoardResponse);
+}

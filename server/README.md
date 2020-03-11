@@ -28,23 +28,4 @@ Check that the desired POM is selected and 'Finish'.
 
 ----
 
-## Authors
-
-**Group ...**
-
-*(fill-in line above with group identifier e.g. A07 or T22; and then delete this line)*
-
-... [...](mailto:...@tecnico.ulisboa.pt)
-
-... [...](mailto:...@tecnico.ulisboa.pt)
-
-... [...](mailto:...@tecnico.ulisboa.pt)
-
-*(fill-in lines above with student number, name, and email; and then delete this line)*
-
-
-----
-
-For help, please contact:
-
 [SD Faculty](mailto:leic-sod@disciplinas.tecnico.ulisboa.pt)
