@@ -1,6 +1,6 @@
-# gRPC Tic Tac Toe exercise
+# gRPC TTT - server
 
-This is the starting point for the gRPC Tic Tac Toe exercise
+This is a gRPC implementation of Tic Tac Toe.
 
 The server depends on the contract module, 
 where the protocol buffers shared between server and client are defined.
