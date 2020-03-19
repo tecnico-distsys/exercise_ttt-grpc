@@ -4,7 +4,7 @@
 	<!-- http://maven.apache.org/pom.html#Quick_Overview -->
 
 	<groupId>pt.ulisboa.tecnico.distsys.ttt</groupId>
-	<artifactId>ttt-client</artifactId>
+	<artifactId>ttt-grpc-client</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -29,7 +29,7 @@
 		<!-- contract brings gRPC dependencies with it -->
 		<dependency>
 			<groupId>pt.ulisboa.tecnico.distsys.ttt</groupId>
-			<artifactId>ttt-contract</artifactId>
+			<artifactId>ttt-grpc-contract</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<!-- JUnit -->
