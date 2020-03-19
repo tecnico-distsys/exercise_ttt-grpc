@@ -2,28 +2,13 @@
 
 This is the starting point for the gRPC Tic Tac Toe exercise
 
-The server depends on the contract module, 
-where the protocol buffers shared between server and client are defined.
-The server needs to know the interface to provide an implementation for it.
+The project is composed by three modules:
+- [contract](contract/) - protocol buffers definition
+- [server](server/) - implementation of service
+- [client](client/) - invocation of service
 
-## Instructions for using Maven
-
-Make sure that you installed the contract module first.
-
-To compile and run the server:
-
-```
-mvn compile exec:java
-```
-
-
-## To configure the Maven project in Eclipse
-
-'File', 'Import...', 'Maven'-'Existing Maven Projects'
-
-'Select root directory' and 'Browse' to the project base folder.
-
-Check that the desired POM is selected and 'Finish'.
+See the README for each module.  
+Start at contract, then go to server, and finally go to the client.
 
 
 ----
