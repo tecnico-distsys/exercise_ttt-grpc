@@ -39,6 +39,6 @@ enum PlayResult {
 
 // service
 
-service TicTacToe {
+service TTT {
   rpc CurrentBoard(CurrentBoardRequest) returns (CurrentBoardResponse);
 }
