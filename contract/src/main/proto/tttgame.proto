@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package pt.ulisboa.tecnico.distsys.ttt;
+package pt.tecnico.ttt;
 
 // The following option causes top-level messages, enums, and services to be defined at the package level, 
 // rather than inside an outer class named after the .proto file.
