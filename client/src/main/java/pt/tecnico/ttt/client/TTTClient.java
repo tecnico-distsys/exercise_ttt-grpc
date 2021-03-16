@@ -9,10 +9,8 @@ import java.util.Scanner;
 
 public class TTTClient {
 
-	/**
-	 * Set flag to true to print debug messages. The flag can be set using the
-	 * -Ddebug command line option.
-	 */
+	/** Set flag to true to print debug messages. 
+	 * The flag can be set using the -Ddebug command line option. */
 	private static final boolean DEBUG_FLAG = (System.getProperty("debug") != null);
 
 	/** Helper method to print debug messages. */
@@ -26,15 +24,15 @@ public class TTTClient {
 		System.out.println(TTTClient.class.getSimpleName());
 
 		// receive and print arguments
-		System.out.printf("Received %d arguments%n", args.length);
+		debug(String.format("Received %d arguments", args.length));
 		for (int i = 0; i < args.length; i++) {
-			System.out.printf("arg[%d] = %s%n", i, args[i]);
+			debug(String.format("arg[%d] = %s", i, args[i]));
 		}
 
 		// check arguments
 		if (args.length < 2) {
-			System.out.println("Argument(s) missing!");
-			System.out.printf("Usage: java %s host port%n", TTTClient.class.getName());
+			System.err.println("Argument(s) missing!");
+			System.err.printf("Usage: java %s host port%n", TTTClient.class.getName());
 			return;
 		}
 
@@ -48,20 +46,23 @@ public class TTTClient {
 		final ManagedChannel channel = ManagedChannelBuilder.forTarget(target).usePlaintext().build();
 
 		// It is up to the client to determine whether to block the call.
-		// Here we create a blocking stub, but an async stub, or an async stub with
-		// Future are also available.
+		// Here we create a blocking stub, but an async stub,
+		// or an async stub with Future are always possible.
 		TTTGrpc.TTTBlockingStub stub = TTTGrpc.newBlockingStub(channel);
 
 		playGame(stub);
+
+		// A Channel should be shutdown before stopping the process.
+		channel.shutdownNow();
 	}
 
 	private static void playGame(TTTGrpc.TTTBlockingStub stub) {
 
-		int player = 0; /* Player number - 0 or 1. */
-		int go = 0; /* Square selection number for turn. */
-		int row = 0; /* Row index for a square. */
-		int column = 0; /* Column index for a square. */
-		int winner = -1; /* The winning player. */
+		int player = 0; /* Player number - 0 or 1 */
+		int go = 0; /* Square selection number for turn */
+		int row = 0; /* Row index for a square */
+		int column = 0; /* Column index for a square */
+		int winner = -1; /* The winning player */
 		PlayResult play_res;
 
 		/*
@@ -70,19 +71,17 @@ public class TTTClient {
 		 */
 		try (Scanner scanner = new Scanner(System.in)) {
 
-			/*
-			 * The main game loop. The game continues for up to 9 turns, as long as there is
-			 * no winner.
-			 */
+			/* The main game loop. The game continues for up to 9 turns, */
+			/* as long as there is no winner. */
 			do {
 				/* Get valid player square selection. */
 				do {
 					/* Print current board. */
-					debug("Calling currentBoard operation...");
+					debug("Call currentBoard");
 					System.out.println(stub.currentBoard(CurrentBoardRequest.getDefaultInstance()).getBoard());
 
 					System.out.printf(
-							"\nPlayer %d, please enter the number of the square "
+							"%nPlayer %d, please enter the number of the square "
 									+ "where you want to place your %c (or 0 to refresh the board): ",
 							player, (player == 1) ? 'X' : 'O');
 					go = scanner.nextInt();
@@ -111,12 +110,12 @@ public class TTTClient {
 
 				/* Select next player. */
 				player = (player + 1) % 2;
-
-				System.out.println("player " + player);
+				debug("player " + player);
 
 			} while (winner == -1);
 
 			/* Game is over so display the final board. */
+			debug("Call currentBoard");
 			System.out.println(stub.currentBoard(CurrentBoardRequest.getDefaultInstance()).getBoard());
 
 			/* Display result message. */
@@ -130,6 +129,7 @@ public class TTTClient {
 		}
 	}
 
+	/** Helper method to display result as text. */
 	private static void displayResult(PlayResult play_res) {
 		switch (play_res) {
 		case OUT_OF_BOUNDS:
