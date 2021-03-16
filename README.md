@@ -1,6 +1,6 @@
 # gRPC Tic Tac Toe exercise
 
-This is the starting point for the gRPC Tic Tac Toe exercise
+This is the starting point for the gRPC Tic Tac Toe exercise.
 
 The project is composed by three modules:
 - [contract](contract/) - protocol buffers definition
