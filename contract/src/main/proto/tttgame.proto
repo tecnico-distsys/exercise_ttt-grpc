@@ -10,23 +10,23 @@ option java_multiple_files = true;
 // current board operation
 
 message CurrentBoardRequest {
-  // No arguments for this request.
+ 	// No arguments for this request.
 }
 
 message CurrentBoardResponse {
-  string board = 1;
+	string board = 1;
 }
 
 
 // play operation
 
 enum PlayResult {
-  UNKNOWN = 0;
-  OUT_OF_BOUNDS = 1;
-  SQUARE_TAKEN = 2;
-  WRONG_TURN = 3;
-  GAME_FINISHED = 4;
-  SUCCESS = 5;
+	UNKNOWN = 0;
+	OUT_OF_BOUNDS = 1;
+	SQUARE_TAKEN = 2;
+	WRONG_TURN = 3;
+	GAME_FINISHED = 4;
+	SUCCESS = 5;
 };
 
 // TODO request and response
@@ -40,5 +40,5 @@ enum PlayResult {
 // service
 
 service TTT {
-  rpc CurrentBoard(CurrentBoardRequest) returns (CurrentBoardResponse);
+	rpc CurrentBoard(CurrentBoardRequest) returns (CurrentBoardResponse);
 }
